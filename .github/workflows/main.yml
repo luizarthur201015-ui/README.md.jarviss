@@ -1,0 +1,37 @@
+
+name: Build JARVIS APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Extrair projeto Android
+        run: |
+          unzip -o JARVIS_AI_GITHUB_READY.zip -d project
+          find project -name gradlew -type f
+
+      - name: Compilar APK
+        run: |
+          cd "$(dirname "$(find project -name gradlew -type f | head -n 1)")"
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: JARVIS-APK
+          path: project/**/*.apk
+          if-no-files-found: error
+          
