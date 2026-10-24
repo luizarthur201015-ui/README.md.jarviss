@@ -1,0 +1,27 @@
+JARVIS AI — Android
+===================
+
+O que esta versão inclui
+- Interface escura futurista com HUD circular desenhado e animado em tempo real.
+- Entrada de texto e reconhecimento de voz em português brasileiro (depende do serviço de voz do Android).
+- Resposta falada com TextToSpeech do Android.
+- Comandos locais para hora/data, notas, calculadora com parênteses, pesquisa web e abrir alguns aplicativos instalados.
+- Conexão opcional com API compatível com OpenAI Chat Completions para conversa aberta. Configure URL, modelo e chave em ⚙.
+- GitHub Actions para compilar um APK de depuração quando o projeto estiver em um repositório GitHub.
+
+Limitações importantes
+- O app não é a IA do filme e não pode controlar tudo no telefone. Android limita as ações disponíveis.
+- A conversa de IA ampla precisa de uma API e internet. A disponibilidade e o custo dependem do provedor/modelo. O modelo padrão é apenas uma sugestão e pode mudar/discontinuar.
+- A chave API é salva localmente nas preferências do app. Não publique nem compartilhe o aparelho com a chave configurada; para um app distribuído, use um backend seguro.
+- O círculo HUD é desenhado em código e animado; não é uma imagem estática.
+- Este repositório precisa ser compilado para produzir o APK. O APK não está pré-incluído.
+
+Como compilar no GitHub
+1. Envie o conteúdo da pasta jarvis_apk_builder para a raiz de um repositório.
+2. Abra Actions e execute “Build JARVIS AI APK”, ou faça push na branch main/master.
+3. Abra a execução concluída e baixe o artefato JARVIS-AI-debug-APK.
+
+Requisitos do build
+- JDK 17
+- Gradle 8.9
+- Android Gradle Plugin 8.7.3
